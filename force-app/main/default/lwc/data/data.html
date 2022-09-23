@@ -1,0 +1,135 @@
+<!--<template>
+    <lightning-datatable
+            key-field="Id"
+            data={data}
+            columns={columns}
+            onrowselection={getSelectedName}
+            onrowaction={handleRowAction}>
+    </lightning-datatable>
+    <lightning-card title = "Search Accounts" icon-name = "custom:custom63">  
+        <div class = "slds-m-around_medium">  
+            <lightning-input type = "search" onchange = {handleKeyChange} class = "slds-m-bottom_small" label = "Search" >
+            </lightning-input>  
+            <template if:true = {accounts}>
+                 
+                <div style="height: 300px;">  
+                    <lightning-datatable key-field="Id"
+                                         data={accounts}
+                                         columns={columns}
+                                         hide-checkbox-column="true"
+                                         show-row-number-column="true"
+                                         onrowaction={handleRowAction}>
+                    </lightning-datatable>  
+                </div>   
+            </template>      
+            <template if:true = {error}>  
+                {error}>                  
+            </template>  
+        </div>  
+    </lightning-card>
+</template>
+<template>     
+    <lightning-datatable
+        key-field="Id"
+        data={issueLogData}
+        show-row-number-column
+        hide-checkbox-column
+        onrowaction={navigateToEditAccountPage}
+        columns={coulumList}>
+</lightning-datatable>        
+
+</template>
+
+  <template>
+    <lightning-card title="Deleting Multiple Contact Records Using Checkbox in LWC" icon-name="custom:custom14">
+                    
+        <lightning-datatable  data={wireContact.data}  columns={columns} key-field="Id"  onrowselection={getSelectedIdAction}  > </lightning-datatable>
+
+        <div slot="footer"> 
+            <lightning-button title="Delete" label="Delete Selected Row" size="small" variant="brand" icon-name="utility:delete" icon-position="right" onclick={deleteContactRowAction}></lightning-button>
+        </div>
+    </lightning-card>
+
+</template>
+
+
+<template>
+    <lightning-button variant="destructive" 
+        label="Delete"
+        icon-name="utility:delete"
+        icon-position="right"
+        onclick={deletecall}>
+    </lightning-button>
+</template>
+
+<template>
+    <lightning-card title="Delete Contact Record in LWC" icon-name="custom:custom14">
+         <table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse;" class="tblColPad">
+             <tr>
+                 <th>First Name</th>
+                 <th>Last Name</th>
+                 <th>Email</th>
+                 <th> </th>
+             </tr>
+             <template for:each={getContact.data} for:item="conItem">
+                 <tr key={conItem.Id}>
+                     <td>{conItem.FirstName}</td>
+                     <td>{conItem.LastName}</td>
+                     <td>{conItem.Email}</td>
+                     <td><lightning-button label="Delete" size="small" variant="neutral" onclick={handleContactDelete} value={conItem.Id} icon-name="utility:delete" icon-position="right" class="deleteButton"></lightning-button></td>
+                 </tr>
+             </template>
+         </table>
+
+<br/><br/>
+  
+    </lightning-card>
+</template>
+-->
+<template>
+
+    <lightning-card title="Configuration Records">
+        <div style="height: 200px">
+            <lightning-datatable 
+                                 key-field="id"
+                                 data={recordData}
+                                 columns={columns}>
+        </lightning-datatable>
+        </div>
+    
+        <div>
+            <lightning-button class="BUTTON-Text whiteh4boldcentre slds-align_absolute-center" variant="success" label="Next" onclick={openCardHandle}></lightning-button>
+        </div>
+    </lightning-card>
+    
+    
+    <template if:true={showCard}>
+    
+    <lightning-card  title="Fetch Fields">
+        <div>
+            <lightning-combobox
+                name="progress"
+                label="Status"
+                value={value}
+                placeholder="Select Progress"
+                options={options}
+                onchange={handleChange} ></lightning-combobox>
+    
+        <p>Selected value is: {value}</p>
+        </div>
+    <div>
+    <lightning-dual-listbox name="Fields" class="slds-m-around_small" label="Select Fields"
+      source-label="Available" selected-label="Selected" field-level-help="Select your preferred Fields"
+      options={selectFields} value={fieldsValue} onchange={handleSelectFields}>
+    </lightning-dual-listbox>
+    </div>
+    
+    <div class="Background-color-p">
+        <span class="BUTTON-Text whiteh4boldcentre slds-align_absolute-center">
+            <lightning-button variant="brand" label="Save" onclick={handleSave} ></lightning-button>  <!-- class="slds-var-m-right_medium" -->
+        </span>
+        </div>
+    
+    </lightning-card>
+    </template>
+</template>
